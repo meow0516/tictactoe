@@ -3,11 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/primeflex.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Tic Tac Toe</title>    
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+    </div>
+
+    <main>
+      <div class="number_input flex justify-content-center">
+        <input type="number" min="1" max="9" placeholder="input 1-9">
+        <input type="submit" value="submit" class="submit">
+      </div>
+      <div class="ox_box_container flex justify-content-center flex-column-reverse">
+        <div class="ox_row flex">
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              1
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              2
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              3
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ox_row flex">
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              4
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              5
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              6
+            </div>
+          </div>
+        </div>
+
+        <div class="ox_row flex">
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              7
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              8
+            </div>
+          </div>
+          <div class="ox_box col-4">
+            <div class="inner_ox_box">
+              9
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>

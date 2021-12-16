@@ -7,3 +7,29 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+*{
+ box-sizing: border-box;
+}
+input{
+  width: 100px;
+  text-transform: uppercase;
+}
+.ox_box_container{
+  width: 100%;
+}
+
+.ox_row{
+  width: 100%;
+}
+
+
+.ox_box{
+  padding: 10px;
+}
+
+.inner_ox_box{
+  background-color: darkblue;
+  color: white;
+  height: 100px;
+}
