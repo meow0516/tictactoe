@@ -8,7 +8,7 @@ let usedNumber = [];
 let players = {
   playerOdd: [],
   playerEven: [],
-}
+};
 let winnerArray = [
   [1,2,3],
   [4,5,6],
@@ -18,13 +18,13 @@ let winnerArray = [
   [3,6,9],
   [1,5,9],
   [3,6,7]
-]
+];
   
 
 
 document.querySelector('.submit').addEventListener('click',function(e){
   
-  let inputValue = document.getElementById('inputValue').value
+  let inputValue = document.getElementById('inputValue').valueAsNumber
   let inner_box = document.querySelectorAll('.inner_ox_box')
   
   // check if inputvalue is used
@@ -40,16 +40,31 @@ document.querySelector('.submit').addEventListener('click',function(e){
       usedNumber.push(inputValue)
       players.playerOdd.push(inputValue)
       
+      checkWinner(winnerArray, players.playerOdd,'Odd')
     }
+
     // current player = playerEven X
     else{
       inner_box[inputValue-1].innerHTML = 'X'
       usedNumber.push(inputValue)
       players.playerEven.push(inputValue)
+  
+      checkWinner(winnerArray, players.playerEven,'Even')
     }
+
   }
   // number has been used
   else{
     alert("This number already used! Try another one.")
   }
+
+  
 })
+
+function checkWinner(winnerArray, playerArray, winner){
+  for (const arr of winnerArray) {
+    if (arr.every(i => playerArray.includes(i))){
+    alert('Player ' + winner + ' win!')
+    }
+  }
+}
