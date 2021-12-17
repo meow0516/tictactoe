@@ -1,8 +1,7 @@
 import './main.scss'
+import '/node_modules/primeflex/primeflex.min.css'
+import '/node_modules/primeflex/themes/arya-blue.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>This is a Tic Tac Toe!</h1>
-`
 let click = 0;
 let usedNumber = [];
 let players = {
