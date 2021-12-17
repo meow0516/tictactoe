@@ -5,8 +5,14 @@ import '/node_modules/primeflex/themes/arya-blue.css'
 let click = 0;
 let usedNumber = [];
 let players = {
-  playerOdd: [],
-  playerEven: [],
+  odd: {
+    name: "Odd",
+    chosenNumber: []
+  }, 
+  even: {
+    name: "Even",
+    chosenNumber: []
+  },
 };
 let winnerArray = [
   [1,2,3],
@@ -24,7 +30,7 @@ let winnerArray = [
 document.querySelector('.submit').addEventListener('click',function(e){
   
   let inputValue = document.getElementById('inputValue').valueAsNumber
-  let inner_box = document.querySelectorAll('.inner_ox_box')
+  let innerBox = document.querySelectorAll('.inner_ox_box')
   
   // check if inputvalue is used
   // number hasn't been used
