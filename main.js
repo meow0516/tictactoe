@@ -2,7 +2,7 @@ import './main.scss'
 import '/node_modules/primeflex/primeflex.min.css'
 import '/node_modules/primeflex/themes/arya-blue.css'
 
-let click = 0;
+let isOddPlayerTurn = true;
 let usedNumber = [];
 let players = {
   odd: {
@@ -35,19 +35,16 @@ document.querySelector('.submit').addEventListener('click',function(e){
     // check if inputvalue is used
     // number hasn't been used
     if( usedNumber.indexOf(inputValue) === -1){
-  
-      // calculate current player
-      click = click + 1
-  
+
       // current player = playerOdd O
-      if( click%2 ){
+      if( isOddPlayerTurn ){
         innerBox[inputValue-1].innerHTML = 'O'
         usedNumber.push(inputValue)
         players.odd.chosenNumber.push(inputValue)
         
         checkWinner(winnerArray, players.odd)
       }
-  
+      
       // current player = playerEven X
       else{
         innerBox[inputValue-1].innerHTML = 'X'
@@ -56,7 +53,7 @@ document.querySelector('.submit').addEventListener('click',function(e){
         
         checkWinner(winnerArray, players.even)
       }
-  
+      isOddPlayerTurn = !isOddPlayerTurn
     }
     // number has been used
     else{
