@@ -73,3 +73,13 @@ function checkWinner(winnerArray, playerArray, winner){
     }
   }
 }
+
+// restart game 
+document.querySelector('.restart').addEventListener('click',function()
+{
+  let restartGame = confirm('Restart the game?')
+  if( restartGame ){
+    window.location.reload()
+  }
+})
+
