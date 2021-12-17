@@ -31,45 +31,51 @@ document.querySelector('.submit').addEventListener('click',function(e){
   
   let inputValue = document.getElementById('inputValue').valueAsNumber
   let innerBox = document.querySelectorAll('.inner_ox_box')
+  if ( inputValue >0 && inputValue <10 ){
+    // check if inputvalue is used
+    // number hasn't been used
+    if( usedNumber.indexOf(inputValue) === -1){
   
-  // check if inputvalue is used
-  // number hasn't been used
-  if( usedNumber.indexOf(inputValue) === -1){
-
-    // calculate current player
-    click = click + 1
-
-    // current player = playerOdd O
-    if( click%2 == 1){
-      inner_box[inputValue-1].innerHTML = 'O'
-      usedNumber.push(inputValue)
-      players.playerOdd.push(inputValue)
-      
-      checkWinner(winnerArray, players.playerOdd,'Odd')
+      // calculate current player
+      click = click + 1
+  
+      // current player = playerOdd O
+      if( click%2 ){
+        innerBox[inputValue-1].innerHTML = 'O'
+        usedNumber.push(inputValue)
+        players.odd.chosenNumber.push(inputValue)
+        
+        checkWinner(winnerArray, players.odd)
+      }
+  
+      // current player = playerEven X
+      else{
+        innerBox[inputValue-1].innerHTML = 'X'
+        usedNumber.push(inputValue)
+        players.even.chosenNumber.push(inputValue)
+        
+        checkWinner(winnerArray, players.even)
+      }
+  
     }
-
-    // current player = playerEven X
+    // number has been used
     else{
-      inner_box[inputValue-1].innerHTML = 'X'
-      usedNumber.push(inputValue)
-      players.playerEven.push(inputValue)
-  
-      checkWinner(winnerArray, players.playerEven,'Even')
+      alert("This number already used! Try another one.")
     }
 
   }
-  // number has been used
   else{
-    alert("This number already used! Try another one.")
+    alert("please input valid number")
   }
+  
 
   
 })
 
-function checkWinner(winnerArray, playerArray, winner){
+function checkWinner(winnerArray, playerInfo){
   for (const arr of winnerArray) {
-    if (arr.every(i => playerArray.includes(i))){
-    alert('Player ' + winner + ' win!')
+    if (arr.every(i => playerInfo.chosenNumber.includes(i))){
+    alert('Player ' + playerInfo.name + ' win!')
     }
   }
 }
