@@ -4,74 +4,77 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/primeflex.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/saga-blue.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/arya-blue.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/themes/vela-blue.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>    
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="flex justify-content-center">
     </div>
 
     <main>
       <div class="number_input flex justify-content-center">
-        <input type="number" min="1" max="9" placeholder="input 1-9">
-        <input type="submit" value="submit" class="submit">
+        <input type="number" min="1" max="9" placeholder="input 1-9" id="inputValue" class="w-8rem uppercase">
+        <input type="submit" value="submit" class="submit w-5rem uppercase">
       </div>
-      <div class="ox_box_container flex justify-content-center flex-column-reverse">
-        <div class="ox_row flex">
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              1
-            </div>
-          </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              2
-            </div>
-          </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              3
-            </div>
-          </div>
 
-        </div>
-
-        <div class="ox_row flex">
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              4
-            </div>
-          </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              5
-            </div>
-          </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              6
-            </div>
+      <div class="ox_box_container flex flex-wrap w-full">        
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            1
           </div>
         </div>
 
-        <div class="ox_row flex">
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              7
-            </div>
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            2
           </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              8
-            </div>
-          </div>
-          <div class="ox_box col-4">
-            <div class="inner_ox_box">
-              9
-            </div>
-          </div>
-
         </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            3
+          </div>
+        </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            4
+          </div>
+        </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            5
+          </div>
+        </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            6
+          </div>
+        </div>
+      
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            7
+          </div>
+        </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            8
+          </div>
+        </div>
+
+        <div class="ox_box col-4">
+          <div class="inner_ox_box h-6rem bg-blue-700 text-white">
+            9
+          </div>
+        </div>
+
       </div>
     </main>
 
