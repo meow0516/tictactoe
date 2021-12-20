@@ -1,3 +1,14 @@
+const winnerArray = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
+];
+
 class TicTacToe {
   constructor() {
     this.isOddPlayerTurn = true;
@@ -14,16 +25,6 @@ class TicTacToe {
         mark: 'X',
       },
     };
-    this.winnerArray = [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-      [1, 4, 7],
-      [2, 5, 8],
-      [3, 6, 9],
-      [1, 5, 9],
-      [3, 5, 7],
-    ];
   }
 
   gameInit() {
@@ -46,14 +47,17 @@ class TicTacToe {
     if (isUsedInput) return alert('This number already used! Try another one.');
 
     // mark box
-    let currentPlayer = this.isOddPlayerTurn
-      ? this.players.odd
-      : this.players.even;
-    this.markBox(innerBox, inputValue, currentPlayer);
-    this.checkWinner(this.winnerArray, currentPlayer);
+    this.markBox(innerBox, inputValue, this.currentPlayer);
+
+    // check winner
+    this.checkWinner(this.currentPlayer);
 
     // players take turns
     this.isOddPlayerTurn = !this.isOddPlayerTurn;
+  }
+
+  get currentPlayer() {
+    return this.isOddPlayerTurn ? this.players.odd : this.players.even;
   }
 
   markBox(box, inputValue, player) {
@@ -62,7 +66,7 @@ class TicTacToe {
     player.chosenNumber.push(inputValue);
   }
 
-  checkWinner(winnerArray, playerInfo) {
+  checkWinner(playerInfo) {
     for (const arr of winnerArray) {
       if (arr.every((value) => playerInfo.chosenNumber.includes(value))) {
         alert('Player ' + playerInfo.name + ' win!');
