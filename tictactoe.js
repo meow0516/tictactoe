@@ -25,6 +25,14 @@ class TicTacToe {
       [3, 5, 7],
     ];
   }
+
+  gameInit() {
+    let that = this;
+    document.querySelector('.submit').addEventListener('click', function () {
+      that.submitValue();
+    });
+  }
+
 }
 
 export default TicTacToe;
