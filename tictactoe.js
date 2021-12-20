@@ -29,9 +29,24 @@ class TicTacToe {
 
   gameInit() {
     let that = this;
+    this.insertBoxes();
     document.querySelector('.submit').addEventListener('click', function () {
       that.submitValue();
     });
+  }
+
+  insertBoxes() {
+    for (let i = 1; i < 10; i++) {
+      let newOxBox = document.createElement('div');
+      let newInnerOxBox = document.createElement('div');
+      let oxBoxContainer = document.querySelector('.ox_box_container');
+      newOxBox.className = 'ox_box col-4';
+      newInnerOxBox.className =
+        'inner_ox_box flex justify-content-center align-items-center h-6rem bg-blue-700 text-white text-4xl';
+      newInnerOxBox.textContent = i;
+      newOxBox.appendChild(newInnerOxBox);
+      oxBoxContainer.appendChild(newOxBox);
+    }
   }
 
   submitValue() {
