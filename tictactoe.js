@@ -49,13 +49,17 @@ class TicTacToe {
     let currentPlayer = this.isOddPlayerTurn
       ? this.players.odd
       : this.players.even;
-    innerBox[inputValue - 1].innerHTML = currentPlayer.mark;
-    this.usedNumber.push(inputValue);
-    currentPlayer.chosenNumber.push(inputValue);
+    this.markBox(innerBox, inputValue, currentPlayer);
     this.checkWinner(this.winnerArray, currentPlayer);
 
     // players take turns
     this.isOddPlayerTurn = !this.isOddPlayerTurn;
+  }
+
+  markBox(box, inputValue, player) {
+    box[inputValue - 1].innerHTML = player.mark;
+    this.usedNumber.push(inputValue);
+    player.chosenNumber.push(inputValue);
   }
 
   checkWinner(winnerArray, playerInfo) {
