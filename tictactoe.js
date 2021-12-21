@@ -1,3 +1,4 @@
+const oxPageContainer = document.getElementById('ox_page_container');
 const winnerArray = [
   [1, 2, 3],
   [4, 5, 6],
@@ -31,42 +32,65 @@ class TicTacToe {
     let that = this;
     this.insertInput();
     this.insertBoxes();
+    this.insertResetBtn();
     document.querySelector('.submit').addEventListener('click', function () {
       that.submitValue();
     });
   }
 
   insertInput() {
-    let numberInput = document.querySelector('.number_input');
+    let numberInputContainer = document.createElement('div');
+    numberInputContainer.className = 'number_input flex justify-content-center';
+    oxPageContainer.appendChild(numberInputContainer);
+
     // input line
-    let newNumberInput = document.createElement('input');
-    newNumberInput.setAttribute('type', 'number');
-    newNumberInput.setAttribute('min', '1');
-    newNumberInput.setAttribute('max', '9');
-    newNumberInput.setAttribute('placeholder', 'input 1-9');
-    newNumberInput.id = 'inputValue';
-    newNumberInput.className = 'w-8rem uppercase';
-    numberInput.append(newNumberInput);
+    let numberInput = document.createElement('input');
+    numberInput.setAttribute('type', 'number');
+    numberInput.setAttribute('min', '1');
+    numberInput.setAttribute('max', '9');
+    numberInput.setAttribute('placeholder', 'input 1-9');
+    numberInput.id = 'inputValue';
+    numberInput.className = 'w-8rem uppercase';
+
     // submit btn
-    let newSubmitInput = document.createElement('input');
-    newSubmitInput.setAttribute('type', 'submit');
-    newSubmitInput.setAttribute('value', 'submit');
-    newSubmitInput.className = 'submit w-5rem uppercase';
-    numberInput.append(newSubmitInput);
+    let submitInput = document.createElement('input');
+    submitInput.setAttribute('type', 'submit');
+    submitInput.setAttribute('value', 'submit');
+    submitInput.className = 'submit w-5rem uppercase';
+
+    // append to div
+    numberInputContainer.append(numberInput);
+    numberInputContainer.append(submitInput);
   }
 
   insertBoxes() {
+    let oxBoxContainer = document.createElement('div');
+    oxBoxContainer.className = 'ox_box_container flex flex-wrap w-full';
+    oxPageContainer.appendChild(oxBoxContainer);
     for (let i = 1; i < 10; i++) {
       let newOxBox = document.createElement('div');
-      let newInnerOxBox = document.createElement('div');
-      let oxBoxContainer = document.querySelector('.ox_box_container');
       newOxBox.className = 'ox_box col-4';
+
+      let newInnerOxBox = document.createElement('div');
       newInnerOxBox.className =
         'inner_ox_box flex justify-content-center align-items-center h-6rem bg-blue-700 text-white text-4xl';
       newInnerOxBox.textContent = i;
+
       newOxBox.appendChild(newInnerOxBox);
       oxBoxContainer.appendChild(newOxBox);
     }
+  }
+
+  insertResetBtn() {
+    let resetContainer = document.createElement('div');
+    resetContainer.className = 'text-center';
+
+    let resetBtn = document.createElement('button');
+    resetBtn.className = 'restart';
+    resetBtn.textContent = 'Restart';
+
+    resetContainer.appendChild(resetBtn);
+    oxPageContainer.appendChild(resetContainer);
   }
 
   submitValue() {
