@@ -29,10 +29,30 @@ class TicTacToe {
 
   gameInit() {
     let that = this;
+    this.insertInput();
     this.insertBoxes();
     document.querySelector('.submit').addEventListener('click', function () {
       that.submitValue();
     });
+  }
+
+  insertInput() {
+    let numberInput = document.querySelector('.number_input');
+    // input line
+    let newNumberInput = document.createElement('input');
+    newNumberInput.setAttribute('type', 'number');
+    newNumberInput.setAttribute('min', '1');
+    newNumberInput.setAttribute('max', '9');
+    newNumberInput.setAttribute('placeholder', 'input 1-9');
+    newNumberInput.id = 'inputValue';
+    newNumberInput.className = 'w-8rem uppercase';
+    numberInput.append(newNumberInput);
+    // submit btn
+    let newSubmitInput = document.createElement('input');
+    newSubmitInput.setAttribute('type', 'submit');
+    newSubmitInput.setAttribute('value', 'submit');
+    newSubmitInput.className = 'submit w-5rem uppercase';
+    numberInput.append(newSubmitInput);
   }
 
   insertBoxes() {
