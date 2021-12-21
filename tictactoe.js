@@ -38,6 +38,12 @@ class TicTacToe {
       .addEventListener('click', function () {
         that.submitValue(that.id);
       });
+    document
+      .getElementById(this.id)
+      .querySelector('.restart')
+      .addEventListener('click', function () {
+        that.restartGame();
+      });
   }
 
   insertGameContainer(id) {
@@ -147,6 +153,12 @@ class TicTacToe {
       if (arr.every((value) => playerInfo.chosenNumber.includes(value))) {
         alert(gameId + ': Player ' + playerInfo.name + ' win!');
       }
+    }
+  }
+  restartGame() {
+    let restartGame = confirm('Restart the game?');
+    if (restartGame) {
+      window.location.reload();
     }
   }
 }

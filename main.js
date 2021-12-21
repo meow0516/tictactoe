@@ -10,11 +10,3 @@ window.onload = function () {
   game1.gameInit();
   game2.gameInit();
 };
-
-// restart game
-document.querySelector('.restart').addEventListener('click', function () {
-  let restartGame = confirm('Restart the game?');
-  if (restartGame) {
-    window.location.reload();
-  }
-});
