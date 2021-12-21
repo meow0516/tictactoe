@@ -11,7 +11,7 @@ const winnerArray = [
 ];
 
 class TicTacToe {
-  constructor() {
+  constructor(id) {
     this.isOddPlayerTurn = true;
     this.usedNumber = [];
     this.players = {
@@ -26,22 +26,31 @@ class TicTacToe {
         mark: 'X',
       },
     };
+    this.id = id;
   }
 
   gameInit() {
     let that = this;
-    this.insertInput();
-    this.insertBoxes();
-    this.insertResetBtn();
+    this.insertGameContainer(this.id);
     document.querySelector('.submit').addEventListener('click', function () {
       that.submitValue();
     });
   }
 
-  insertInput() {
+  insertGameContainer(id) {
+    let gameContainer = document.createElement('div');
+    gameContainer.id = id;
+    gameContainer.textContent = id;
+    oxPageContainer.appendChild(gameContainer);
+    this.insertInput(gameContainer);
+    this.insertBoxes(gameContainer);
+    this.insertResetBtn(gameContainer);
+  }
+
+  insertInput(upperContainer) {
     let numberInputContainer = document.createElement('div');
     numberInputContainer.className = 'number_input flex justify-content-center';
-    oxPageContainer.appendChild(numberInputContainer);
+    upperContainer.appendChild(numberInputContainer);
 
     // input line
     let numberInput = document.createElement('input');
@@ -63,10 +72,10 @@ class TicTacToe {
     numberInputContainer.append(submitInput);
   }
 
-  insertBoxes() {
+  insertBoxes(upperContainer) {
     let oxBoxContainer = document.createElement('div');
     oxBoxContainer.className = 'ox_box_container flex flex-wrap w-full';
-    oxPageContainer.appendChild(oxBoxContainer);
+    upperContainer.appendChild(oxBoxContainer);
     for (let i = 1; i < 10; i++) {
       let newOxBox = document.createElement('div');
       newOxBox.className = 'ox_box col-4';
@@ -81,7 +90,7 @@ class TicTacToe {
     }
   }
 
-  insertResetBtn() {
+  insertResetBtn(upperContainer) {
     let resetContainer = document.createElement('div');
     resetContainer.className = 'text-center';
 
@@ -90,7 +99,7 @@ class TicTacToe {
     resetBtn.textContent = 'Restart';
 
     resetContainer.appendChild(resetBtn);
-    oxPageContainer.appendChild(resetContainer);
+    upperContainer.appendChild(resetContainer);
   }
 
   submitValue() {
