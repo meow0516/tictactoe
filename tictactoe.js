@@ -32,9 +32,12 @@ class TicTacToe {
   gameInit() {
     let that = this;
     this.insertGameContainer(this.id);
-    document.querySelector('.submit').addEventListener('click', function () {
-      that.submitValue();
-    });
+    document
+      .getElementById(this.id)
+      .querySelector('.submit')
+      .addEventListener('click', function () {
+        that.submitValue(that.id);
+      });
   }
 
   insertGameContainer(id) {
@@ -102,9 +105,14 @@ class TicTacToe {
     upperContainer.appendChild(resetContainer);
   }
 
-  submitValue() {
-    let inputValue = document.getElementById('inputValue').valueAsNumber;
-    let innerBox = document.querySelectorAll('.inner_ox_box');
+  submitValue(gameId) {
+    let inputValue = document
+      .getElementById(gameId)
+      .querySelector('#inputValue').valueAsNumber;
+
+    let innerBox = document
+      .getElementById(gameId)
+      .querySelectorAll('.inner_ox_box');
 
     // check valid input
     let isValidInput = inputValue > 0 && inputValue < 10;
@@ -118,7 +126,7 @@ class TicTacToe {
     this.markBox(innerBox, inputValue, this.currentPlayer);
 
     // check winner
-    this.checkWinner(this.currentPlayer);
+    this.checkWinner(gameId, this.currentPlayer);
 
     // players take turns
     this.isOddPlayerTurn = !this.isOddPlayerTurn;
@@ -134,10 +142,10 @@ class TicTacToe {
     player.chosenNumber.push(inputValue);
   }
 
-  checkWinner(playerInfo) {
+  checkWinner(gameId, playerInfo) {
     for (const arr of winnerArray) {
       if (arr.every((value) => playerInfo.chosenNumber.includes(value))) {
-        alert('Player ' + playerInfo.name + ' win!');
+        alert(gameId + ': Player ' + playerInfo.name + ' win!');
       }
     }
   }
